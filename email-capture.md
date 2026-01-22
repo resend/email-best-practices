@@ -35,7 +35,7 @@ Validate email format in the browser before submission.
 - Don't block on format alone (server should validate too)
 
 **Best practices:**
-- Validate format immediately (on blur or input)
+- Validate format immediately (on blur or input with a short debounce)
 - Show clear error messages
 - Don't be too strict (allow valid but unusual formats)
 - Remember: format validation ≠ deliverability
@@ -94,7 +94,7 @@ Services can check if an email address is deliverable by:
 - Identifying disposable emails
 - Detecting role-based addresses (info@, support@)
 
-These APIs can help catch invalid emails before sending, reducing bounce rates. Services like Resend and other email providers often offer validation features or integrate with verification services.
+These APIs can help catch invalid emails before sending, reducing bounce rates.
 
 ## Email Verification
 
@@ -310,7 +310,7 @@ User provides email address and must confirm via email before being added to lis
 **Prevent abuse:**
 - Limit verification email sends (e.g., 3 per hour per email)
 - Rate limit form submissions
-- Use CAPTCHA if needed (sparingly)
+- Use CAPTCHA or botId tools if needed (sparingly)
 - Monitor for abuse patterns
 
 ## Email Verification APIs
