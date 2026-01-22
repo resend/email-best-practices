@@ -93,7 +93,7 @@ Your sender reputation determines whether ISPs trust your emails. It's built ove
 
 When starting with a new IP address or sending domain, gradually increase volume to build reputation.
 
-**Warming schedule:**
+**Example warming schedule:**
 - Week 1: 50-100 emails/day
 - Week 2: 200-500 emails/day
 - Week 3: 1,000-2,000 emails/day
@@ -308,7 +308,7 @@ Respect rate limits to avoid throttling:
 **Check:**
 1. Authentication (SPF, DKIM, DMARC) - most common issue
 2. Sender reputation (blacklists, complaint rates)
-3. Content (spam trigger words, HTML issues)
+3. Content (spammy content, HTML issues)
 4. Sending patterns (sudden volume increases)
 
 ### Authentication Failures
@@ -333,10 +333,10 @@ Respect rate limits to avoid throttling:
 **Causes:**
 - Sending to unverified addresses
 - Poor list hygiene
-- Invalid email collection
+- Improper email collection
 
 **Solutions:**
-- Implement email validation
+- Implement email validation and verification
 - Remove hard bounces immediately
 - Clean lists regularly
 - Use double opt-in for marketing emails

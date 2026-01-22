@@ -49,7 +49,7 @@ The CAN-SPAM Act applies to commercial emails sent in the United States.
 
 ### Penalties
 
-Violations can result in fines up to $51,744 per email (as of 2024). Each separate email in violation is a separate offense.
+Violations can result in fines up to $53,088 per email (as of 2025). Each separate email in violation is a separate offense.
 
 ### Best Practices
 
@@ -104,7 +104,7 @@ For marketing emails, you need:
 
 ### Penalties
 
-Fines can be up to €20 million or 4% of annual global revenue, whichever is higher.
+Fines can be up to €20 million or 4% of annual global revenue, whichever is higher (as of 2026).
 
 ### Best Practices
 
@@ -156,7 +156,7 @@ Applies when:
 
 ### Penalties
 
-Fines up to $10 million CAD for businesses, $1 million CAD for individuals.
+Fines up to $10 million CAD for businesses, $1 million CAD for individuals (as of 2026).
 
 ### Best Practices
 
