@@ -1,14 +1,6 @@
 # Marketing Email Best Practices
 
-Best practices for creating and sending marketing emails that are engaging, compliant, and effective. Marketing emails require explicit consent and must follow stricter compliance requirements than transactional emails.
-
-## When to Use This
-
-- Building marketing email campaigns
-- Creating newsletters or promotional emails
-- Implementing marketing email infrastructure
-- Ensuring marketing email compliance
-- Optimizing marketing email performance
+Creating and sending marketing emails: opt-in requirements, unsubscribe mechanisms, content design, segmentation, A/B testing, and compliance.
 
 ## Core Principles
 

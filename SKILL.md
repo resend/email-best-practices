@@ -1,7 +1,6 @@
 ---
 name: email-best-practices
-description: Best practices for building and sending emails, covering deliverability, compliance, email types, and responsible email capture.
-version: 1.0.0
+description: Use when building email features, setting up email authentication (SPF, DKIM, DMARC), troubleshooting deliverability issues, implementing email capture forms, or ensuring compliance with CAN-SPAM, GDPR, or CASL.
 ---
 
 # Email Best Practices
@@ -52,6 +51,19 @@ Legal requirements for email sending, unsubscribe mechanisms, consent management
 
 Guidance on email validation techniques, verification APIs, double opt-in vs single opt-in, form design, and error handling.
 
+## Provider Implementation Guides
+
+Code examples for popular email service providers. See [providers/](./providers/) for full guides.
+
+| Provider | Guide | Best For |
+|----------|-------|----------|
+| Resend | [providers/resend.md](./providers/resend.md) | Modern DX, React Email |
+| SendGrid | [providers/sendgrid.md](./providers/sendgrid.md) | Enterprise, Twilio ecosystem |
+| Mailgun | [providers/mailgun.md](./providers/mailgun.md) | Flexibility, email validation |
+| Postmark | [providers/postmark.md](./providers/postmark.md) | Transactional focus, deliverability |
+
+Each guide includes: sending emails, webhooks, domain authentication, and error handling.
+
 ## Quick Reference
 
 | Scenario | Primary Skill | Secondary Skills |
@@ -66,6 +78,7 @@ Guidance on email validation techniques, verification APIs, double opt-in vs sin
 | Deciding transactional vs marketing | [Email Types](./email-types.md) | [Compliance](./compliance.md) |
 | Implementing email verification | [Email Capture](./email-capture.md) | [Transactional Emails](./transactional-emails.md) |
 | Building marketing campaigns | [Marketing Emails](./marketing-emails.md) | [Compliance](./compliance.md) |
+| Implementing with a provider | [providers/](./providers/) | [Deliverability](./deliverability.md) |
 
 ## Examples
 

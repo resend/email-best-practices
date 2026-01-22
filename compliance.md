@@ -1,14 +1,6 @@
 # Email Compliance
 
-Legal requirements for sending emails vary by jurisdiction. This guide covers major email compliance laws and how to ensure your email practices comply.
-
-## When to Use This
-
-- Ensuring legal compliance for email sending
-- Understanding requirements for different regions
-- Setting up unsubscribe mechanisms
-- Managing consent and opt-in processes
-- Planning international email campaigns
+Legal requirements for email sending by jurisdiction. Covers CAN-SPAM (US), GDPR (EU), CASL (Canada), and other regional laws including unsubscribe mechanisms and consent management.
 
 ## Important Disclaimer
 
@@ -219,12 +211,29 @@ All major email laws require unsubscribe mechanisms. Requirements vary slightly.
 - Must be free
 - Must be easy to use
 
+### List-Unsubscribe Header
+
+The `List-Unsubscribe` header enables one-click unsubscribe in email clients (Gmail, Apple Mail, etc.). Required by Gmail and Yahoo as of 2024.
+
+**Two formats:**
+```
+List-Unsubscribe: <mailto:unsubscribe@yourdomain.com?subject=unsubscribe>
+List-Unsubscribe: <https://yourdomain.com/unsubscribe?token=abc123>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+```
+
+**Best practices:**
+- Include both mailto and https URLs
+- Add `List-Unsubscribe-Post` header for one-click support (RFC 8058)
+- Process unsubscribe requests automatically
+- Most email services (including Resend) handle this automatically
+
 ### Best Practices (Universal)
 
 **Make unsubscribe:**
 - Prominent (visible in email footer)
 - Easy to find
-- One-click when possible
+- One-click when possible (use List-Unsubscribe header)
 - Immediate (process right away)
 - Confirmed (send confirmation)
 
@@ -234,6 +243,56 @@ All major email laws require unsubscribe mechanisms. Requirements vary slightly.
 - Charge fees
 - Ask for unnecessary information
 - Delay processing
+
+## Email Tracking and Analytics
+
+Marketing emails often include tracking pixels and link tracking. This has compliance implications.
+
+### Tracking Pixels (Open Tracking)
+
+**What they do:** Invisible 1x1 pixel images that load when email is opened, tracking open rates.
+
+**GDPR considerations:**
+- Tracking pixels process personal data (IP address, device info, time)
+- May require disclosure in privacy policy
+- Consider whether legitimate interest applies or consent is needed
+- Some interpretations require explicit consent for tracking
+
+**Best practices:**
+- Disclose tracking in privacy policy
+- Consider offering tracking opt-out
+- Don't rely solely on open rates (Apple Mail Privacy Protection blocks them)
+
+### Link Tracking
+
+**What it does:** Rewrites links to pass through tracking server, measuring click rates.
+
+**GDPR considerations:**
+- Similar to tracking pixels - processes personal data
+- Should be disclosed in privacy policy
+
+**Recommendation:** Disclose all tracking in your privacy policy. For maximum compliance (especially in EU), consider consent for tracking separate from consent to receive emails.
+
+## Data Processing Agreements (DPAs)
+
+When using third-party email services, GDPR requires a Data Processing Agreement.
+
+**What is a DPA:**
+A contract between you (data controller) and your email service (data processor) that defines how personal data is handled.
+
+**Required elements:**
+- Subject matter and duration of processing
+- Nature and purpose of processing
+- Types of personal data processed
+- Obligations and rights of both parties
+- Security measures
+- Sub-processor authorization
+
+**Best practices:**
+- Sign DPA with your email service provider before processing EU data
+- Most services (Resend, SendGrid, Mailchimp) offer standard DPAs
+- Keep copies of all signed DPAs
+- Review sub-processor lists periodically
 
 ## Consent Management
 

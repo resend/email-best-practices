@@ -1,15 +1,6 @@
 # Email Capture Best Practices
 
-Best practices for collecting email addresses responsibly, including validation, verification, and opt-in processes. Proper email capture improves deliverability, reduces bounces, and ensures compliance.
-
-## When to Use This
-
-- Building email signup forms
-- Implementing email validation
-- Setting up email verification
-- Deciding between single and double opt-in
-- Handling invalid email addresses
-- Designing email capture forms
+Collecting email addresses responsibly: validation, verification, single vs double opt-in, form design, and error handling.
 
 ## Email Validation
 
@@ -225,6 +216,39 @@ User provides email address and must confirm via email before being added to lis
 - When legally sufficient in your jurisdiction
 
 **Best practice:** Use double opt-in for marketing emails whenever possible. The quality and compliance benefits outweigh the conversion cost.
+
+### Conversion Benchmarks
+
+**Typical double opt-in confirmation rates:**
+- Well-designed flow: 70-85% confirm
+- Average flow: 50-70% confirm
+- Poor flow (slow, unclear): 30-50% confirm
+
+**If your confirmation rate is low, check:**
+- Confirmation email deliverability (check spam folder)
+- Time to receive (should be < 30 seconds)
+- Email clarity (is the CTA obvious?)
+- Subject line (does it say "confirm" clearly?)
+
+### Handling Unconfirmed Signups
+
+**Confirmation email timing:**
+1. Send confirmation immediately (within seconds)
+2. Send reminder after 24 hours if not confirmed
+3. Send final reminder after 72 hours
+4. Purge unconfirmed after 7 days
+
+**Reminder email best practices:**
+- Different subject line than original ("Still want to subscribe?")
+- Keep it short and focused
+- Single CTA to confirm
+- Include option to unsubscribe from reminders
+- Limit to 2 reminders maximum (avoid spam complaints)
+
+**What NOT to do:**
+- Don't add unconfirmed emails to your main list
+- Don't send marketing content to unconfirmed addresses
+- Don't keep unconfirmed signups indefinitely
 
 ## Form Design Best Practices
 

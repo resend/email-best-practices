@@ -1,14 +1,31 @@
 # Email Types: Transactional vs Marketing
 
-Understanding the difference between transactional and marketing emails is crucial for compliance, deliverability, and user experience. This guide explains the distinctions and provides a catalog of transactional emails your app should include.
+Distinctions between transactional and marketing emails, legal implications of each, and a catalog of transactional emails your app should include.
 
-## When to Use This
+## Quick Decision Guide
 
-- Deciding whether an email should be transactional or marketing
-- Understanding legal distinctions between email types
-- Planning what transactional emails your app needs
-- Ensuring compliance with email regulations
-- Setting up separate sending infrastructure
+**Is this email transactional or marketing?**
+
+```
+Did the user take a specific action that triggered this email?
+├─ YES → Is the email required for them to complete that action?
+│        ├─ YES → TRANSACTIONAL (password reset, OTP, order confirmation)
+│        └─ NO → Does it confirm/update them about their action?
+│                ├─ YES → TRANSACTIONAL (shipping update, payment receipt)
+│                └─ NO → MARKETING (recommendations, upsells)
+└─ NO → MARKETING (newsletter, promotion, announcement)
+```
+
+**Gray area examples:**
+| Email | Classification | Why |
+|-------|---------------|-----|
+| "Your subscription renews tomorrow" | Transactional | User expects it, needs to act |
+| "Your free trial ends tomorrow" | Transactional | User expects it, needs to act |
+| "We miss you! Come back" | Marketing | Promotional, not user-initiated |
+| "New features in your plan" | Marketing* | Promotional unless user's workflow is affected |
+| "Price increase notice" | Transactional | Required disclosure, affects their subscription |
+
+*If a feature change affects how they use the product, it can be transactional.
 
 ## Transactional vs Marketing: Key Differences
 
@@ -331,6 +348,26 @@ Your app should include these transactional emails based on your use case:
 - Be clear about amount and date
 - Make it easy to update payment method
 - Provide cancellation option
+
+#### Trial Expiration Notices
+**When to send:** Before free trial ends (typically 3 days and 1 day before).
+
+**Purpose:** Notify user their trial is ending and what happens next.
+
+**Content should include:**
+- Trial end date
+- What happens after (subscription starts, access ends, etc.)
+- Pricing if converting to paid
+- Link to upgrade or cancel
+- Summary of what they've used/accomplished
+
+**Best practices:**
+- Send multiple reminders (3 days before, 1 day before)
+- Be clear about whether they'll be charged automatically
+- Highlight value they've received during trial
+- Make upgrade CTA prominent but don't be pushy
+
+**Note:** Trial expiration emails are transactional (user expects them based on signing up for trial). However, avoid adding promotional upsells—keep focused on the trial status.
 
 #### Payment Failed Notices
 **When to send:** When subscription payment fails.

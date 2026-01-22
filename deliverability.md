@@ -1,15 +1,6 @@
 # Email Deliverability
 
-Best practices for ensuring your emails reach recipients' inboxes. Deliverability depends on proper authentication, sender reputation, infrastructure setup, and ongoing monitoring.
-
-## When to Use This
-
-- Setting up email infrastructure for the first time
-- Configuring email authentication (SPF, DKIM, DMARC, BIMI)
-- Troubleshooting emails going to spam
-- Monitoring email delivery and reputation
-- Setting up bounce and complaint handling
-- Planning IP warming strategies
+Best practices for ensuring your emails reach recipients' inboxes. Covers authentication (SPF, DKIM, DMARC, BIMI), sender reputation, bounce handling, and monitoring.
 
 ## Email Authentication
 
@@ -42,10 +33,32 @@ DKIM adds a cryptographic signature to emails, proving they came from your domai
 2. Add public key as TXT record in DNS
 3. Configure your email service to sign outgoing messages
 
+**Understanding DKIM selectors:**
+DKIM uses "selectors" to allow multiple keys per domain. The DNS record name follows the format: `selector._domainkey.yourdomain.com`
+
+Example: If your selector is `resend`, you'd create a TXT record at:
+`resend._domainkey.yourdomain.com`
+
+**Example DKIM TXT record:**
+```
+v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2K4PavXoNY8eGK2u61lJW+gWfE0g+dL...
+```
+
+- `v=DKIM1` - Version
+- `k=rsa` - Key type
+- `p=` - Public key (base64 encoded)
+
+**Verification tools:**
+- [MXToolbox DKIM Lookup](https://mxtoolbox.com/dkim.aspx) - Check DKIM records
+- [mail-tester.com](https://mail-tester.com) - Send test email, get full authentication report
+- [Google Admin Toolbox](https://toolbox.googleapps.com/apps/checkmx/) - Check MX and authentication
+- Command line: `dig TXT selector._domainkey.yourdomain.com`
+
 **Best practices:**
 - Use 2048-bit keys for better security
 - Rotate keys periodically (every 6-12 months)
 - Monitor for signing failures
+- When rotating: publish new key → wait for DNS propagation → update signing config → remove old key
 
 ### DMARC (Domain-based Message Authentication, Reporting & Conformance)
 

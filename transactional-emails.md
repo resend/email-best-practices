@@ -1,14 +1,6 @@
 # Transactional Email Best Practices
 
-Best practices for designing, writing, and sending transactional emails that are clear, actionable, and deliverable. Transactional emails are critical to your user experience and should be treated with the same care as your core product features.
-
-## When to Use This
-
-- Building transactional email features (password resets, OTP codes, order confirmations)
-- Designing transactional email templates
-- Writing transactional email content
-- Optimizing transactional email delivery
-- Ensuring transactional emails are user-friendly
+Designing and sending transactional emails (password resets, OTP codes, order confirmations): subject lines, content structure, mobile-first design, timing, and delivery.
 
 ## Core Principles
 
@@ -437,6 +429,31 @@ Set up alerts for:
 - High bounce rates
 - Authentication failures
 - Unusual patterns
+
+## Email Composition
+
+Building HTML emails is notoriously difficult due to inconsistent client rendering. Consider using a framework designed for email development.
+
+### React Email
+
+[React Email](https://react.email) lets you build emails using React components, providing:
+- Component-based architecture
+- Preview and testing tools
+- Consistent rendering across clients
+- TypeScript support
+
+For React Email guidance:
+```bash
+npx skills add resend/react-email
+```
+
+### Other Approaches
+
+- **MJML** - Markup language that compiles to responsive HTML
+- **Foundation for Emails** - Responsive email framework
+- **Plain HTML** - Direct HTML with inline styles (most control, most tedious)
+
+Whichever approach you use, always test across email clients before sending.
 
 ## Related Topics
 
