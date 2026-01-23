@@ -28,9 +28,14 @@ Use this skill when:
 Covers email authentication (SPF, DKIM, DMARC, BIMI), sender reputation, bounce handling, monitoring, and infrastructure best practices.
 
 ### [Email Types](./email-types.md)
-**Use when:** Deciding what type of email to send, understanding legal distinctions, or cataloging transactional email needs.
+**Use when:** Deciding what type of email to send or understanding legal distinctions between transactional and marketing emails.
 
-Explains the difference between transactional and marketing emails, when to use each, and provides a comprehensive catalog of transactional email types your app should include.
+Explains the difference between transactional and marketing emails, when to use each, and legal requirements under CAN-SPAM, GDPR, and CASL.
+
+### [Transactional Email Catalog](./transactional-email-catalog.md)
+**Use when:** Planning what transactional emails your app needs or choosing the right email combination for your app type.
+
+Comprehensive catalog of transactional emails organized by category, plus recommended email combinations for different app types (auth apps, e-commerce, SaaS, fintech, etc.).
 
 ### [Transactional Emails](./transactional-emails.md)
 **Use when:** Building transactional email features like password resets, OTP codes, order confirmations, or account notifications.
@@ -57,13 +62,14 @@ Guidance on email validation techniques, verification APIs, double opt-in vs sin
 | Scenario | Primary Skill | Secondary Skills |
 |----------|--------------|------------------|
 | Setting up email authentication | [Deliverability](./deliverability.md) | - |
-| Building password reset flow | [Transactional Emails](./transactional-emails.md) | [Email Types](./email-types.md) |
-| Implementing OTP/2FA emails | [Transactional Emails](./transactional-emails.md) | [Email Types](./email-types.md) |
+| Building password reset flow | [Transactional Emails](./transactional-emails.md) | [Catalog](./transactional-email-catalog.md) |
+| Implementing OTP/2FA emails | [Transactional Emails](./transactional-emails.md) | [Catalog](./transactional-email-catalog.md) |
 | Building newsletter signup | [Email Capture](./email-capture.md) | [Compliance](./compliance.md), [Marketing Emails](./marketing-emails.md) |
-| Sending order confirmations | [Transactional Emails](./transactional-emails.md) | [Email Types](./email-types.md) |
+| Sending order confirmations | [Transactional Emails](./transactional-emails.md) | [Catalog](./transactional-email-catalog.md) |
 | Ensuring GDPR compliance | [Compliance](./compliance.md) | [Email Capture](./email-capture.md) |
 | Troubleshooting delivery issues | [Deliverability](./deliverability.md) | - |
 | Deciding transactional vs marketing | [Email Types](./email-types.md) | [Compliance](./compliance.md) |
+| Planning emails for new app | [Catalog](./transactional-email-catalog.md) | [Email Types](./email-types.md) |
 | Implementing email verification | [Email Capture](./email-capture.md) | [Transactional Emails](./transactional-emails.md) |
 | Building marketing campaigns | [Marketing Emails](./marketing-emails.md) | [Compliance](./compliance.md) |
 
