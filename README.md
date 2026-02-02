@@ -61,3 +61,11 @@ Open `SKILL.md` - it has a routing table that directs you to the right resource 
 ## License
 
 MIT
+
+## Compatible Agents
+
+This email best practices skill works with:
+
+- [Claude Code](https://claude.ai/code) - Anthropic's official CLI
+- [AdaL](https://sylph.ai/adal) - Self-evolving AI coding agent with MCP support
+
