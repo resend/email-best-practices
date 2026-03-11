@@ -1,6 +1,6 @@
 ---
 name: email-best-practices
-description: Use when building email features, emails going to spam, high bounce rates, setting up SPF/DKIM/DMARC authentication, implementing email capture, ensuring compliance (CAN-SPAM, GDPR, CASL), handling webhooks, retry logic, or deciding transactional vs marketing.
+description: Guides email infrastructure setup, deliverability optimization, and compliance implementation. Diagnoses spam and bounce issues, configures SPF/DKIM/DMARC authentication, implements CAN-SPAM/GDPR/CASL compliance, and builds reliable sending with retry logic, webhooks, and suppression management. Use when building email features, emails going to spam, high bounce rates, setting up authentication, implementing email capture, ensuring compliance, handling webhooks, retry logic, or deciding transactional vs marketing.
 ---
 
 # Email Best Practices
@@ -43,6 +43,23 @@ Guidance for building deliverable, compliant, user-friendly emails.
 | Handle retries, idempotency, errors | [Sending Reliability](./resources/sending-reliability.md) |
 | Process delivery events, set up webhooks | [Webhooks & Events](./resources/webhooks-events.md) |
 | Manage bounces, complaints, suppression | [List Management](./resources/list-management.md) |
+
+## Minimal Example: Send with Idempotency
+
+```typescript
+import { Resend } from "resend";
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+await resend.emails.send({
+  from: "App <noreply@yourdomain.com>",
+  to: user.email,
+  subject: "Verify your email",
+  html: `<p>Click <a href="${verifyUrl}">here</a> to verify.</p>`,
+  headers: { "X-Entity-Ref-ID": `verify-${user.id}` }, // idempotency
+});
+```
+
+See [Sending Reliability](./resources/sending-reliability.md) for retry logic and [Deliverability](./resources/deliverability.md) for DNS setup.
 
 ## Start Here
 
