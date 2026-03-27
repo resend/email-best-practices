@@ -48,6 +48,10 @@ jobs:
                 echo "Changed: $item"
                 changed=true
               fi
+              if [ -e "$dst" ] && [ ! -e "$src" ]; then
+                echo "Deleted: $item"
+                changed=true
+              fi
             done
           fi
 
