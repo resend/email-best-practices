@@ -1,0 +1,85 @@
+name: Sync Skills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SKILL.md'
+      - 'references/**'
+      - 'scripts/**'
+      - 'assets/**'
+  workflow_dispatch:
+
+concurrency:
+  group: sync-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          path: source
+
+      - name: Checkout resend-skills
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: resend/resend-skills
+          token: ${{ secrets.SYNC_SKILLS_TOKEN }}
+          path: target
+
+      - name: Compare skill
+        id: diff
+        run: |
+          changed=false
+          skill_name="email-best-practices"
+          target_dir="target/skills/$skill_name"
+
+          if [ ! -d "$target_dir" ]; then
+            echo "New skill: $skill_name"
+            changed=true
+          else
+            for item in SKILL.md references scripts assets; do
+              src="source/$item"
+              dst="$target_dir/$item"
+              if [ -e "$src" ] && ! diff -rq "$src" "$dst" > /dev/null 2>&1; then
+                echo "Changed: $item"
+                changed=true
+              fi
+            done
+          fi
+
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+
+      - name: Copy skill and open PR
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_SKILLS_TOKEN }}
+        run: |
+          cd target
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b sync/email-best-practices-${{ github.sha }}
+
+          skill_dir="skills/email-best-practices"
+          rm -rf "$skill_dir"
+          mkdir -p "$skill_dir"
+
+          cp ../source/SKILL.md "$skill_dir/"
+          for dir in references scripts assets; do
+            if [ -d "../source/$dir" ]; then
+              cp -r "../source/$dir" "$skill_dir/"
+            fi
+          done
+
+          git add skills/
+          git commit -m "sync: email-best-practices skills from ${GITHUB_SHA::7}"
+          git push origin sync/email-best-practices-${{ github.sha }}
+
+          gh pr create \
+            --repo resend/resend-skills \
+            --title "Sync email-best-practices skills" \
+            --body "Automated sync from [resend/email-best-practices@\`${GITHUB_SHA::7}\`](https://github.com/resend/email-best-practices/commit/${{ github.sha }})."
