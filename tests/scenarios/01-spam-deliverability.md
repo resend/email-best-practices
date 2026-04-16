@@ -19,9 +19,9 @@ The agent MUST include these skill-specific details:
 ### Authentication (deliverability.md)
 - [ ] SPF record example: `v=spf1 include:amazonses.com ~all`
 - [ ] DKIM: provider supplies the record
-- [ ] DMARC: `v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com`
+- [ ] DMARC: `v=DMARC1; p=none; rua=mailto:dmarc@example.com`
 - [ ] DMARC rollout: `p=none` → `p=quarantine; pct=25` → `p=reject`
-- [ ] Verification commands: `dig TXT yourdomain.com +short`, `dig TXT resend._domainkey.yourdomain.com +short`, `dig TXT _dmarc.yourdomain.com +short`
+- [ ] Verification commands: `dig TXT example.com +short`, `dig TXT resend._domainkey.example.com +short`, `dig TXT _dmarc.example.com +short`
 
 ### Thresholds (deliverability.md)
 - [ ] Bounce targets: <1% good, 1-3% acceptable, 3-4% concerning, >4% critical
@@ -34,7 +34,7 @@ The agent MUST include these skill-specific details:
 - [ ] Week 4: 5,000-10,000/day
 
 ### Infrastructure (deliverability.md)
-- [ ] Dedicated subdomains: `t.yourdomain.com` (transactional), `m.yourdomain.com` (marketing)
+- [ ] Dedicated subdomains: `t.example.com` (transactional), `m.example.com` (marketing)
 - [ ] DNS TTL: 300s during setup, 3600s+ after stable
 
 ### Troubleshooting order (deliverability.md)
