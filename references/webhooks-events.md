@@ -41,10 +41,14 @@ import { Webhook } from 'svix';
 
 const webhook = new Webhook(process.env.RESEND_WEBHOOK_SECRET);
 
-app.post('/webhooks/resend', (req, res) => {
+// Svix signs the exact raw bytes, so the body must NOT be JSON-parsed first.
+// Mount express.raw() on this route — re-serialising an already-parsed body
+// with JSON.stringify() changes key order and whitespace, so verification
+// fails even for legitimate deliveries.
+app.post('/webhooks/resend', express.raw({ type: 'application/json' }), (req, res) => {
   try {
     const payload = webhook.verify(
-      JSON.stringify(req.body),
+      req.body.toString('utf8'),
       {
         'svix-id': req.headers['svix-id'],
         'svix-timestamp': req.headers['svix-timestamp'],
